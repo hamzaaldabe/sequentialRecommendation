@@ -1,0 +1,72 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-06-19 23:13:18 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             |                     
+ hidden_size     | 64                  
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.001               
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ topk            | 5,10,20,50          
+========================================
+INFO:root:Device: cpu
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/SeqReader.pkl
+INFO:root:#params: 586816
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(8714, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-06-19 23:14:41 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ emb_size        | 64                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             |                     
+ hidden_size     | 64                  
+ history_max     | 20                  
+ l2              | 1e-06               
+ lr              | 0.001               
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 0                   
+ test_all        | 0                   
+ topk            | 5,10,20,50          
+========================================
+INFO:root:Device: cpu
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/SeqReader.pkl
+INFO:root:#params: 586816
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(8714, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.4891 [7.7 s]    dev=(HR@5:0.2458,NDCG@5:0.1607) [0.6 s] *
+INFO:root:Epoch 2     loss=0.4194 [7.6 s]    dev=(HR@5:0.3136,NDCG@5:0.2101) [0.7 s] *
+INFO:root:Epoch 3     loss=0.3855 [7.2 s]    dev=(HR@5:0.3291,NDCG@5:0.2205) [0.6 s] *
+INFO:root:Epoch 4     loss=0.3631 [7.0 s]    dev=(HR@5:0.3461,NDCG@5:0.2348) [0.6 s] *
