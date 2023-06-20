@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <!-- Submit button -->
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                            <button id ="signinbtn" type="submit" class="btn btn-primary btn-block">Sign in</button>
 
 
                         </div>

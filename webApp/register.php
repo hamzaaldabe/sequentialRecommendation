@@ -67,7 +67,7 @@ if (isset($_POST['register'])) {
                             class="form-control" />
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
+                        <button id="regbtn" type="submit" name="register" class="btn btn-primary btn-block">Register</button>
                     </div>
                 </form>
             </div>
