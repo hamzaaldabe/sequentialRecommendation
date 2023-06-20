@@ -1,5 +1,10 @@
 <?php
+session_start();
 include "connect.php";
+
+if (isset($_SESSION['Username'])) {
+    header('Location: main.php'); // Redirect To main Page
+}
 ?>
 <?php include "sections/header.php" ?>
 
@@ -67,7 +72,8 @@ if (isset($_POST['register'])) {
                             class="form-control" />
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button id="regbtn" type="submit" name="register" class="btn btn-primary btn-block">Register</button>
+                        <button id="regbtn" type="submit" name="register"
+                            class="btn btn-primary btn-block">Register</button>
                     </div>
                 </form>
             </div>

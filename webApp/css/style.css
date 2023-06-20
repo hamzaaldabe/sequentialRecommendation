@@ -17,20 +17,22 @@ body {
 .register-label {
   margin-top: 20px;
 }
-#signinbtn{
+#signinbtn {
   background-color: black;
 }
-#regbtn{
+#regbtn {
   background-color: black;
 }
-#row{
+#row {
   margin-top: 50px;
-
 }
-#movie{
+#movie {
   margin-bottom: 60px;
 }
-.font{
+.font {
   color: white;
   margin-bottom: 6px;
+}
+.pagination li {
+  margin-left: 5px;
 }
