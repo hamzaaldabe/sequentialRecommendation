@@ -1,10 +1,39 @@
 <?php
-session_start();
 include "connect.php";
-
-
 ?>
 <?php include "sections/header.php" ?>
+
+<?php
+
+if (isset($_POST['register'])) {
+    if ($_POST['firstname'] != "" || $_POST['username'] != "" || $_POST['password'] != "") {
+        try {
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $username = $_POST['username'];
+            // md5 encrypted
+            $password = md5($_POST['password']);
+            // $password = $_POST['password'];
+            $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "INSERT INTO `users` VALUES ('', '$firstname', '$lastname', '$username', '$password')";
+            $con->exec($sql);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+        $_SESSION['message'] = array("text" => "User successfully created.", "alert" => "info");
+        $con = null;
+        header('location:index.php');
+    } else {
+        echo "
+				<script>alert('Please fill up the required field!')</script>
+				<script>window.location = 'registration.php'</script>
+			";
+    }
+}
+?>
+
+
+
 <div class="container main-container">
     <div class="row justify-content-center">
         <div class="card" style="width: 40rem;">
@@ -38,7 +67,7 @@ include "connect.php";
                             class="form-control" />
                     </div>
                     <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <button type="submit" name="register" class="btn btn-primary btn-block">Register</button>
                     </div>
                 </form>
             </div>
