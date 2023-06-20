@@ -1,0 +1,17 @@
+
+body{
+    background-color:#EEEEEE!important;
+}
+
+.name{
+    color: #2c3034;
+    font-size: 38px;
+    font-style: italic;
+    margin-top: 20px;
+}
+.main-container {
+    margin-top: 5%;
+}
+#userrow{
+    margin-bottom: 24px;
+}

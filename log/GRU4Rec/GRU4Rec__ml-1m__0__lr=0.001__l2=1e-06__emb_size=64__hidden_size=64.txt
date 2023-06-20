@@ -1,0 +1,48 @@
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-06-20 02:25:38 ---------------------------------------------
+INFO:root:
+==============================
+ Arguments       | Values     
+==============================
+ batch_size      | 256       
+ dataset         | ml-1m     
+ dropout         | 0         
+ early_stop      | 10        
+ emb_size        | 64        
+ epoch           | 200       
+ eval_batch_size | 256       
+ gpu             |           
+ hidden_size     | 64        
+ history_max     | 20        
+ l2              | 1e-06     
+ lr              | 0.001     
+ num_neg         | 1         
+ num_workers     | 5         
+ optimizer       | Adam      
+ random_seed     | 0         
+ test_all        | 0         
+ topk            | 5,10,20,50
+==============================
+INFO:root:Device: cpu
+INFO:root:Reading data from "../data/", dataset = "ml-1m" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 6040, "# item": 3706, "# entry": 1000209
+INFO:root:Appending history info...
+INFO:root:Save corpus to ../data/ml-1m/SeqReader.pkl
+INFO:root:#params: 266368
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 64, batch_first=True)
+  (out): Linear(in_features=64, out_features=64, bias=True)
+)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.2842 [96.9 s]    dev=(HR@5:0.4232,NDCG@5:0.2868) [0.5 s] *
+INFO:root:Epoch 2     loss=0.1929 [99.9 s]    dev=(HR@5:0.5353,NDCG@5:0.3731) [0.5 s] *
+INFO:root:Epoch 3     loss=0.1562 [102.6 s]    dev=(HR@5:0.6083,NDCG@5:0.4368) [0.6 s] *
+INFO:root:Epoch 4     loss=0.1362 [101.4 s]    dev=(HR@5:0.6392,NDCG@5:0.4663) [0.5 s] *
+INFO:root:Epoch 5     loss=0.1257 [91.9 s]    dev=(HR@5:0.6455,NDCG@5:0.4776) [0.4 s] *
+INFO:root:Epoch 6     loss=0.1191 [88.4 s]    dev=(HR@5:0.6704,NDCG@5:0.4972) [0.4 s] *
+INFO:root:Epoch 7     loss=0.1120 [87.8 s]    dev=(HR@5:0.6803,NDCG@5:0.5061) [0.5 s] *
+INFO:root:Epoch 8     loss=0.1067 [86.0 s]    dev=(HR@5:0.6927,NDCG@5:0.5191) [0.4 s] *
+INFO:root:Epoch 9     loss=0.1022 [84.5 s]    dev=(HR@5:0.7036,NDCG@5:0.5256) [0.4 s] *
+INFO:root:Epoch 10    loss=0.0987 [88.3 s]    dev=(HR@5:0.7022,NDCG@5:0.5328) [0.4 s] *
