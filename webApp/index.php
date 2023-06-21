@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Connected successfully";
 
         $_SESSION['Username'] = $username; // Register Session Name
-        $_SESSION['ID'] = $row['UserID']; // Register Session ID
+        $_SESSION['userID'] = $row['userID']; // Register Session ID
         header('Location: main.php'); // Redirect To Dashboard Page
         exit();
     }
@@ -91,16 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         <!-- Submit button -->
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button id ="signinbtn" type="submit" class="btn btn-primary btn-block">Sign in</button>
+                            <button id="signinbtn" type="submit" class="btn btn-primary btn-block">Sign in</button>
 
 
                         </div>
-                        <label class="register-label">don't have an account yet sign up <a href="register.php" type="submit"
-                                class="">here</a></label>
+                        <label class="register-label">don't have an account yet sign up <a href="register.php"
+                                type="submit" class="">here</a></label>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <?php "sections/footer.php" ?>

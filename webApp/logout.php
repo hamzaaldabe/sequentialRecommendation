@@ -1,11 +1,13 @@
 <?php
 
-	session_start(); // Start The Session
+session_start(); // Start The Session
 
-	session_unset(); // Unset The Data
+session_regenerate_id();
 
-	session_destroy(); // Destory The Session
+session_unset(); // Unset The Data
 
-	header('Location: index.php');
+session_destroy(); // Destory The Session
 
-	exit();
+header('Location: index.php');
+
+exit();

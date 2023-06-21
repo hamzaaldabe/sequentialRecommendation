@@ -10,7 +10,9 @@ import json
 
 @api_view(['POST'])
 def test(request):
-    dict={'key':1,'name':'value'}
-    data=request.POST
+    # dict={'key':1,'name':'value'}
+    # data=request.POST
+    # print(data)
+    data=json.loads(request.body)
     print(data)
-    return JsonResponse(json.dumps(dict), safe=False)
+    return JsonResponse(json.dumps(data), safe=False)

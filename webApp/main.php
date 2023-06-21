@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "connect.php";
+$now = date_create()->format('Y-m-d H:i:s');
 // Function to search for movie title on Google and retrieve the first image URL
 if (!isset($_SESSION['Username'])) {
     header('Location: index.php'); // Redirect To login Page
@@ -42,13 +43,19 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
         if (!empty($movies)) {
             foreach ($movies as $movie) {
                 echo '
-      <div id="movie" class="col-md-3 text-center">
-      <label class="font" name="MovieID > ' . $movie['MovieID'] . '</label>
+    <form  method="post" class="col-lg-3 col-md-3 col-s-3 col-xs-12" action="sendData.php">          
+      <div id="movie" class="col-md-12 text-center">
+      <label class="font" name="MovieID" > ' . $movie['MovieID'] . '</label>
+      <input type="text" hidden value="' . $movie['MovieID'] . '" name="MovieID" />
+      <input type="text" hidden value="' . session_id() . '" name="sessionId" />
+      <input type="text" hidden value="' . $_SESSION['userID'] . '" name="userID" />
+      <input type="text" hidden value="' . $now . '" name="timestamp" />
       </br>
       <label class="font"> ' . $movie['Title'] . ' </label>
       </br>
       <button type="submit" class="btn btn-primary btn-block">Watch</button>
-      </div>      
+      </div>
+      </form>  
       ';
             }
         } else {
@@ -56,28 +63,29 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
         }
 
         ?>
-        <ul class="pagination">
-            <li><a href="?pageno=1" class="btn btn-primary btn-block">First</a></li>
-            <li class="<?php if ($pageno <= 1) {
-                echo 'disabled';
-            } ?>">
-                <a href="<?php if ($pageno <= 1) {
-                    echo '#';
-                } else {
-                    echo "?pageno=" . ($pageno - 1);
-                } ?>" class="btn btn-primary btn-block">Prev</a>
-            </li>
-            <li class="<?php if ($pageno >= $total_pages) {
-                echo 'disabled';
-            } ?>">
-                <a class="btn btn-primary btn-block" href="<?php if ($pageno >= $total_pages) {
-                    echo '#';
-                } else {
-                    echo "?pageno=" . ($pageno + 1);
-                } ?> ">Next</a>
-            </li>
-            <li><a class="btn btn-primary btn-block" href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
-        </ul>
+
     </div>
+    <ul class="pagination">
+        <li><a href="?pageno=1" class="btn btn-primary btn-block">First</a></li>
+        <li class="<?php if ($pageno <= 1) {
+            echo 'disabled';
+        } ?>">
+            <a href="<?php if ($pageno <= 1) {
+                echo '#';
+            } else {
+                echo "?pageno=" . ($pageno - 1);
+            } ?>" class="btn btn-primary btn-block">Prev</a>
+        </li>
+        <li class="<?php if ($pageno >= $total_pages) {
+            echo 'disabled';
+        } ?>">
+            <a class="btn btn-primary btn-block" href="<?php if ($pageno >= $total_pages) {
+                echo '#';
+            } else {
+                echo "?pageno=" . ($pageno + 1);
+            } ?> ">Next</a>
+        </li>
+        <li><a class="btn btn-primary btn-block" href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
+    </ul>
 </div>
 <?php "sections/footer.php" ?>
