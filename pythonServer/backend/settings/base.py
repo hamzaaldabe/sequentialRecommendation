@@ -30,7 +30,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 INSTALLED_APPS = [
 
     'account.apps.AccountConfig',
-    'polls.apps.PollsConfig',
     'sequentialRecommendation.apps.SequentialrecommendationConfig',
     'rest_framework',
     'corsheaders',

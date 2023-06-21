@@ -6,7 +6,6 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('polls/', include('polls.urls', namespace='polls')),
     path('sequential/',include('sequentialRecommendation.urls',namespace='sequentialRecommendation'))
 ]
 

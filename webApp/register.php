@@ -20,7 +20,7 @@ if (isset($_POST['register'])) {
             $password = md5($_POST['password']);
             // $password = $_POST['password'];
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO `users` VALUES ('', '$firstname', '$lastname', '$username', '$password')";
+            $sql = "INSERT INTO `users` VALUES (null, '$firstname', '$lastname', '$username', '$password')";
             $con->exec($sql);
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -28,6 +28,7 @@ if (isset($_POST['register'])) {
         $_SESSION['message'] = array("text" => "User successfully created.", "alert" => "info");
         $con = null;
         header('location:index.php');
+    
     } else {
         echo "
 				<script>alert('Please fill up the required field!')</script>
