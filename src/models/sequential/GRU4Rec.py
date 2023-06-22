@@ -10,10 +10,11 @@ CMD example:
     python main.py --model_name GRU4Rec --emb_size 64 --hidden_size 128 --lr 1e-3 --l2 1e-4 --history_max 20 \
     --dataset 'Grocery_and_Gourmet_Food'
 """
-
+import sys
+sys.path.insert(1, '/home/hamza/Desktop/sequentialRecommendation/src')
 import torch
 import torch.nn as nn
-
+import sys
 from models.BaseModel import SequentialModel
 
 
@@ -48,14 +49,13 @@ class GRU4Rec(SequentialModel):
         i_ids = feed_dict['item_id']  # [batch_size, -1]
         history = feed_dict['history_items']  # [batch_size, history_max]
         lengths = feed_dict['lengths']  # [batch_size]
-
-        his_vectors = self.i_embeddings(history)
+        
+        his_vectors = self.i_embeddings(history.long())
 
         # Sort and Pack
         sort_his_lengths, sort_idx = torch.topk(lengths, k=len(lengths))
         sort_his_vectors = his_vectors.index_select(dim=0, index=sort_idx)
-        history_packed = torch.nn.utils.rnn.pack_padded_sequence(
-            sort_his_vectors, sort_his_lengths.cpu(), batch_first=True)
+        history_packed = torch.nn.utils.rnn.pack_padded_sequence(sort_his_vectors, sort_his_lengths.cpu(), batch_first=True)
 
         # RNN
         output, hidden = self.rnn(history_packed, None)

@@ -1,0 +1,30 @@
+INFO:root:Namespace(model_name='POP')
+INFO:root:--------------------------------------------- BEGIN: 2023-06-22 20:50:02 ---------------------------------------------
+INFO:root:
+========================================
+ Arguments       | Values               
+========================================
+ batch_size      | 256                 
+ dataset         | Grocery_and_Gourm...
+ dropout         | 0                   
+ early_stop      | 10                  
+ epoch           | 200                 
+ eval_batch_size | 256                 
+ gpu             | 0                   
+ l2              | 0                   
+ lr              | 0.001               
+ num_neg         | 1                   
+ num_workers     | 5                   
+ optimizer       | Adam                
+ random_seed     | 1                   
+ test_all        | 0                   
+ topk            | 5,10,20,50          
+========================================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/Grocery_and_Gourmet_Food/BaseReader.pkl
+INFO:root:#params: 0
+INFO:root:POP()
+INFO:root:
+Test After Training: (HR@5:0.2065,NDCG@5:0.1301,HR@10:0.3347,NDCG@10:0.1713,HR@20:0.4859,NDCG@20:0.2096,HR@50:0.6896,NDCG@50:0.2499)
+INFO:root:
+--------------------------------------------- END: 2023-06-22 20:50:04 ---------------------------------------------
