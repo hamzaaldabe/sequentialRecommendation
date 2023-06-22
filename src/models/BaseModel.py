@@ -172,7 +172,7 @@ class GeneralModel(BaseModel):
         self.item_num = corpus.n_items
         self.num_neg = args.num_neg
         self.dropout = args.dropout
-        self.test_all = args.test_allF
+        self.test_all = args.test_all
 
     def loss(self, out_dict: dict) -> torch.Tensor:
         """
