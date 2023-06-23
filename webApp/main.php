@@ -43,7 +43,7 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
         if (!empty($movies)) {
             foreach ($movies as $movie) {
                 echo '
-    <form  method="post" class="col-lg-3 col-md-3 col-s-3 col-xs-12" action="sendData.php">          
+    <form  method="post" class="col-lg-3 col-md-3 col-s-3 col-xs-12" action="sendData.php?pageno=' . $pageno . '">          
       <div id="movie" class="col-md-12 text-center">
       <label class="font" name="MovieID" > ' . $movie['MovieID'] . '</label>
       <input type="text" hidden value="' . $movie['MovieID'] . '" name="MovieID" />
@@ -51,7 +51,7 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
       <input type="text" hidden value="' . $_SESSION['userID'] . '" name="userID" />
       <input type="text" hidden value="' . $now . '" name="timestamp" />
       </br>
-      <label class="font"> '. $movie['Title'] . ' </label>
+      <label class="font"> ' . $movie['Title'] . ' </label>
       
       </br>
       <label class="font" name="MovieID" > ' . $movie['Genre'] . '</label>
@@ -91,4 +91,4 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
         <li><a class="btn btn-primary btn-block" href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
     </ul>
 </div>
-<?php "sections/footer.php" ?>
+<?php include "sections/footer.php" ?>

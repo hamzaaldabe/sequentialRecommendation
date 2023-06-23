@@ -1,5 +1,11 @@
 <?php
 
+if (isset($_GET['pageno'])) {
+    $pageno = $_GET['pageno'];
+} else {
+    $pageno = 1;
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $MovieID = $_POST['MovieID'];
@@ -39,5 +45,5 @@ $result = curl_exec($ch);
 
 // Close cURL resource
 curl_close($ch);
-header('Location: main.php');
+header('Location: main.php?pageno=' . $pageno);
 ?>
