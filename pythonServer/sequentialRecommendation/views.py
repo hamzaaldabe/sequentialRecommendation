@@ -11,14 +11,15 @@ import torch
 import torch.nn as nn
 import numpy as np
 from src.models.sequential.GRU4Rec import GRU4Rec
-
 # Create your views here.
-
 userList={}
 lastItem={}
 historyItems={}
 recommended_movie_ids = []
-def runModel(feed_dict):
+predictedMoviesList={}
+moviesByUser={}
+def runModel(user_id,feed_dict):
+    global predictedMoviesList
     model_path = '/home/hamza/Desktop/sequentialRecommendation/model/GRU4Rec/GRU4Rec__ml-1m__0__lr=0.001__l2=0.0001__emb_size=64__hidden_size=100.pt'
     args = Args()
     model = GRU4Rec(args=args,corpus=pickle.load(open('/home/hamza/Desktop/sequentialRecommendation/data/ml-1m/SeqReader.pkl', 'rb')))
@@ -32,9 +33,8 @@ def runModel(feed_dict):
 
     # Convert the indices to actual movie IDs
     recommended_movie_ids = top_k_indices.squeeze().tolist()
-
-    print(recommended_movie_ids)
-
+    
+    predictedMoviesList[user_id]=recommended_movie_ids
 
 def process_json_response(json_response):
 
@@ -48,7 +48,10 @@ def process_json_response(json_response):
     
     if user_id not in userList:
         userList[user_id] = []
+    if user_id not in moviesByUser:
+        moviesByUser[user_id] = []    
     userList[user_id].append(data)
+    moviesByUser[user_id].append(int(data["movie"]["MovieID"]))
     historyItems[user_id].append(int(data["movie"]["MovieID"]))
     lastItem[user_id].append(data["movie"]["MovieID"])
 
@@ -63,20 +66,15 @@ def get_gru4rec_inputs(user_id, session_ids, item_ids, timestamps):
     }
     return inputs
 
-@api_view(['POST'])
-def recommended(request):
-    
-    return JsonResponse(recommended_movie_ids,safe=False)
-    
+
 @api_view(['POST'])
 def test(request):
-    userID = request.body
     data=json.loads(request.body)
     movie_id = data["movie"]["MovieID"]
     session_id = data["movie"]["sessionId"]
     user_id = data["movie"]["userID"]
     timestamp = data["movie"]["timestamp"]
-    
+    user_id2=user_id
     if user_id not in userList:
             userList[user_id] = []
     if user_id not in lastItem:
@@ -87,6 +85,9 @@ def test(request):
     data_string = json.dumps(data)
     process_json_response(data_string)
     
+    print(moviesByUser)
+    
+
     feed_dict = {}
 
     new_history = []
@@ -97,7 +98,6 @@ def test(request):
         for response in responses:
             new_history.append(response)
 
-    print(new_history)
     # Define the input data
 
     # Convert the input data to tensors
@@ -115,5 +115,18 @@ def test(request):
         'batch_size': torch.tensor(1)
     }
 
-    runModel(feed_dict=feed_dict)
+
+    runModel(int(user_id2),feed_dict=feed_dict)
+    print(predictedMoviesList)
     return JsonResponse(json.dumps(data), safe=False)
+
+@api_view(['POST'])
+def recommend(request):
+    
+    data=json.loads(request.body)
+    user_id = data['user_id']
+    global predictedMoviesList
+    if len(predictedMoviesList[user_id]) > 0:
+        return JsonResponse(predictedMoviesList[user_id],safe=False)
+    else:
+        return JsonResponse("No data",safe=False)

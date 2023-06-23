@@ -7,6 +7,6 @@ from . import views
 app_name = 'sequentialRecommendation'
 urlpatterns = [
     path('test/',views.test,name='test'),
-    path('rec/',views.recommended,name='recommended'),
+    path('forme/',views.recommend,name='recommend')
 
 ]

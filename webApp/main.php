@@ -12,7 +12,7 @@ if (isset($_GET['pageno'])) {
 } else {
     $pageno = 1;
 }
-$no_of_records_per_page = 16;
+$no_of_records_per_page = 12;
 $offset = ($pageno - 1) * $no_of_records_per_page;
 
 $total_pages_sql = "SELECT COUNT(*) FROM movies";
@@ -51,7 +51,10 @@ $total_pages = ceil($total_rows / $no_of_records_per_page);
       <input type="text" hidden value="' . $_SESSION['userID'] . '" name="userID" />
       <input type="text" hidden value="' . $now . '" name="timestamp" />
       </br>
-      <label class="font"> ' . $movie['Title'] . ' </label>
+      <label class="font"> '. $movie['Title'] . ' </label>
+      
+      </br>
+      <label class="font" name="MovieID" > ' . $movie['Genre'] . '</label>
       </br>
       <button type="submit" class="btn btn-primary btn-block">Watch</button>
       </div>
