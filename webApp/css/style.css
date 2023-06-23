@@ -1,0 +1,38 @@
+body {
+  background-color: #2c3034 !important;
+}
+
+.name {
+  color: #2c3034;
+  font-size: 38px;
+  font-style: italic;
+  margin-top: 20px;
+}
+.main-container {
+  margin-top: 5%;
+}
+#userrow {
+  margin-bottom: 24px;
+}
+.register-label {
+  margin-top: 20px;
+}
+#signinbtn {
+  background-color: black;
+}
+#regbtn {
+  background-color: black;
+}
+#row {
+  margin-top: 50px;
+}
+#movie {
+  margin-bottom: 60px;
+}
+.font {
+  color: white;
+  margin-bottom: 6px;
+}
+.pagination li {
+  margin-left: 5px;
+}

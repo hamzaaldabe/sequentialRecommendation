@@ -9,7 +9,8 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset as BaseDataset
 from torch.nn.utils.rnn import pad_sequence
 from typing import List
-
+import sys
+sys.path.insert(1, '/home/hamza/Desktop/sequentialRecommendation/src')
 from utils import utils
 from helpers.BaseReader import BaseReader
 

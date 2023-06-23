@@ -17,7 +17,7 @@ python main.py --model_name DirectAU --emb_size 64 --lr 1e-3 --l2 1e-5 --gamma 0
 
 python main.py --model_name FPMC --emb_size 64 --lr 1e-3 --l2 1e-6 --history_max 20 --dataset 'Grocery_and_Gourmet_Food'
 
-python main.py --model_name GRU4Rec --emb_size 64 --hidden_size 100 --lr 1e-3 --l2 1e-4 --history_max 20 --dataset 'Grocery_and_Gourmet_Food'
+python main.py --model_name GRU4Rec --emb_size 64 --hidden_size 100 --lr 1e-3 --l2 1e-4 --history_max 20 --dataset 'ml-1m'
 
 python main.py --model_name NARM --emb_size 64 --hidden_size 100 --attention_size 4 --lr 1e-3 --l2 1e-4 --history_max 20 --dataset 'Grocery_and_Gourmet_Food'
 
