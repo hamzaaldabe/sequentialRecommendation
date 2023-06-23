@@ -11,11 +11,12 @@ for line in lines:
     parts = line.strip().split('::')
     movie_id = int(parts[0])
     movie_title = parts[1].strip('*')
-    movies.append((movie_id, movie_title))
+    genre = parts[2].strip('::')
+    movies.append((movie_id, movie_title,genre))
 
 with open(output_file, 'w', newline='', encoding='utf-8') as file:
     writer = csv.writer(file)
-    writer.writerow(['MovieID', 'Title'])
+    writer.writerow(['MovieID', 'Title','Genre'])
     writer.writerows(movies)
 
 print(f"Successfully saved {len(movies)} movies to {output_file}.")
