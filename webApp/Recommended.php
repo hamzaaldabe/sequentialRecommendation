@@ -8,7 +8,8 @@ if (!isset($_SESSION['Username'])) {
   header('Location: index.php'); // Redirect To login Page
 }
 
-$userId = 6;
+
+$userId = $_SESSION['userID'];
 
 
 // API URL
@@ -19,7 +20,7 @@ $ch = curl_init($url);
 
 // Setup request to send json via POST
 $data = array(
-  'user_id' => 6,
+  'user_id' => $_SESSION['userID'],
 );
 
 $payload = json_encode($data);

@@ -158,3 +158,36 @@ INFO:root:
 Test After Training: (HR@5:0.6389,NDCG@5:0.4669,HR@10:0.7685,NDCG@10:0.5090,HR@20:0.8737,NDCG@20:0.5357,HR@50:0.9685,NDCG@50:0.5548)
 INFO:root:
 --------------------------------------------- END: 2023-06-23 01:06:43 ---------------------------------------------
+INFO:root:Namespace(model_name='GRU4Rec')
+INFO:root:--------------------------------------------- BEGIN: 2023-07-07 05:15:26 ---------------------------------------------
+INFO:root:
+==============================
+ Arguments       | Values     
+==============================
+ batch_size      | 256       
+ dataset         | ml-1m     
+ dropout         | 0         
+ early_stop      | 10        
+ emb_size        | 64        
+ epoch           | 200       
+ eval_batch_size | 256       
+ gpu             | 0         
+ hidden_size     | 100       
+ history_max     | 20        
+ l2              | 0.0001    
+ lr              | 0.001     
+ num_neg         | 1         
+ num_workers     | 5         
+ optimizer       | Adam      
+ random_seed     | 0         
+ test_all        | 0         
+ topk            | 5,10,20,50
+==============================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/ml-1m/SeqReader.pkl
+INFO:root:#params: 293512
+INFO:root:GRU4Rec(
+  (i_embeddings): Embedding(3707, 64)
+  (rnn): GRU(64, 100, batch_first=True)
+  (out): Linear(in_features=100, out_features=64, bias=True)
+)
